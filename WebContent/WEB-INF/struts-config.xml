@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean
+		name="personaFormBean"
+		type="form.PersonaForm" />
+	</form-beans>
+
+	<global-forwards>
+		<forward name="inicio" path="/index.jsp"/>
+	</global-forwards>
+	
+	<action-mappings>
+	   	<action
+	   	name="personaFormBean" 
+	   	path="/catalogoPersonas"
+	   	scope="request"
+	   	parameter="operacion"
+	   	type="action.CatalogoPersonasAction">
+		   	<forward name="lista" path="/WEB-INF/listar.jsp"/>
+			<forward name="agrega" path="/WEB-INF/agregar.jsp"/>
+	    </action>
+	   	    
+	    <action path="/inicio"
+	    type="org.apache.struts.actions.ForwardAction"
+	    parameter="/index.jsp"/>
+	</action-mappings>
+
+</struts-config>
